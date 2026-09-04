@@ -1,0 +1,14 @@
+{
+  "name": "mongodb-nodejs-demo",
+  "version": "1.0.0",
+  "description": "Store JSON placeholder user data in MongoDB using Node.js",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mongodb": "^6.8.0"
+  }
+}

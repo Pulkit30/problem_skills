@@ -1,0 +1,12 @@
+input {
+  width: 300px;
+  height: 40px;
+  font-size: 16px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+button {
+  width: 150px;
+  height: 70px;
+  padding: 8px;
+}
