@@ -47,14 +47,23 @@ const App = () => {
   }
   return (
     <>
+      <label htmlFor="user-search">Search users</label>
       <input
         type="search"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search by User Name"
       />
+      <p>
+        Showing {filteredUsers.length}{" "}
+        {filteredUsers.length === 1 ? "user" : "users"}
+      </p>
       {noUser ? (
-        <p>No users found.</p>
+        <p>
+          {searchTerm
+            ? `No users found matching "${searchTerm}".`
+            : "No users found."}
+        </p>
       ) : (
         <ul>
           {filteredUsers.map((user) => {
