@@ -20,16 +20,29 @@ export const useUsers = () => {
 };
 const App = () => {
   const users = useUsers();
+  const [searchTerm, setSearchTerm] = useState("");
   return (
-    <ul>
-      {users.map((user) => {
-        return (
-          <li key={user.id}>
-            {user.name} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {user.email}
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      <input
+        type="search"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Search by User Name"
+      />
+      <ul>
+        {users
+          .filter((user) =>
+            user.name.toLowerCase().includes(searchTerm.toLowerCase()),
+          )
+          .map((user) => {
+            return (
+              <li key={user.id}>
+                {user.name} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {user.email}
+              </li>
+            );
+          })}
+      </ul>
+    </>
   );
 };
 export default App;
