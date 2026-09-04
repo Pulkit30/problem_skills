@@ -1,5 +1,35 @@
+import { useEffect, useState } from "react";
+
+export const useUsers = () => {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/users",
+        );
+        const userData = await response.json();
+        setUsers(userData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUsers();
+  }, []);
+  return users;
+};
 const App = () => {
-  //   const [users, setUsers] = useState([]);
-  <h1>App renders</h1>;
+  const users = useUsers();
+  return (
+    <ul>
+      {users.map((user) => {
+        return (
+          <li key={user.id}>
+            {user.name} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {user.email}
+          </li>
+        );
+      })}
+    </ul>
+  );
 };
 export default App;
